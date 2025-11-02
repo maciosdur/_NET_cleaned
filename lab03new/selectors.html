@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Selektory CSS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li>
+          <a href="#">Tekst i Rozmiary</a>
+          <ul>
+            <li><a href="sizes.html">Jednostki tekstu</a></li>
+            <li><a href="text.html">Formatowanie tekstu</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Wygląd & Tło</a>
+          <ul>
+            <li><a href="background.html">Tła stron</a></li>
+            <li><a href="border.html">Ramki (border)</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Układ</a>
+          <ul>
+            <li><a href="box.html">Box model i pozycjonowanie</a></li>
+            <li><a href="tables.html">Tabele</a></li>
+          </ul>
+        </li>
+        <li><a href="selectors.html">Selektory</a></li>
+        <li><a href="pseudo.html">Pseudoklasy i pseudoelementy</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Przykłady selektorów</h1>
+
+      <section>
+        <h2>1. Selektor elementu (tag)</h2>
+        <p>Selektor: <code>p</code> (dotyczy wszystkich paragrafów)</p>
+        <p>To jest paragraf testowy.</p>
+      </section>
+
+      <section>
+        <h2>2. Klasa (.klasa)</h2>
+        <p class="example-class">
+          To jest element z klasą <code>.example-class</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Id (#id)</h2>
+        <p id="example-id">
+          To jest element z identyfikatorem <code>#example-id</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Zagnieżdżenie (descendant)</h2>
+        <div class="outer">
+          <div class="inner">
+            <p>Ten paragraf jest wewnątrz <code>.outer .inner p</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. Child selector (>)</h2>
+        <ul>
+          <li>
+            Parent
+            <ul>
+              <li class="child">
+                Bezpośrednie dziecko (ten wewnętrzny li jest child)
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Reguła używa <code>ul > li</code> aby stylować tylko bezpośrednie
+          dzieci.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

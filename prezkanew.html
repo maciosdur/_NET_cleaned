@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rola Komunikacji Werbalnej - Interaktywna Prezentacja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f0f4f8;
+      }
+      .slide {
+        display: none;
+        min-height: 520px; /* Zwiększona wysokość dla lepszego dopasowania */
+      }
+      .slide.active {
+        display: flex;
+      }
+      .quiz-option {
+        transition: all 0.2s ease-in-out;
+      }
+      .quiz-option:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .correct {
+        background-color: #d1fae5 !important;
+        border-color: #10b981 !important;
+      }
+      .incorrect {
+        background-color: #fee2e2 !important;
+        border-color: #ef4444 !important;
+      }
+      .feedback {
+        display: none;
+        font-size: 0.9rem;
+        margin-top: 8px;
+      }
+      .feedback.show {
+        display: block;
+      }
+      .interactive-reveal {
+        cursor: pointer;
+      }
+      .explanation {
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        padding: 0 1rem;
+      }
+      .explanation.show {
+        display: block;
+        max-height: 200px; /* Adjust as needed */
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body
+    class="flex flex-col items-center justify-center min-h-screen p-4 md:p-8"
+  >
+    <div
+      id="presentation-container"
+      class="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden"
+    >
+      <div class="p-8">
+        <!-- Slajd 1: Tytułowy -->
+        <div
+          class="slide active flex-col justify-center items-center text-center"
+          data-slide="1"
+        >
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Rola Komunikacji Werbalnej
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-600">
+            Słownik, gramatyka, funkcje słów, zdań i pytań.
+          </p>
+          <div class="mt-8 text-gray-500">
+            <p>Autorzy: Maciej Durkalec, Błażej Kowal</p>
+          </div>
+        </div>
+
+        <!-- Slajd 2: Plan prezentacji (ZAKTUALIZOWANY - Usunięto Metakomunikację) -->
+        <div class="slide flex-col justify-center" data-slide="2">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            Plan prezentacji (~45 min)
+          </h2>
+          <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
+            <li>
+              Definicja komunikacji werbalnej.
+              <span class="text-gray-500 text-sm">(3 min)</span>
+            </li>
+            <li>
+              Wideo: Kontekst komunikacji.
+              <span class="text-gray-500 text-sm">(2 min)</span>
+            </li>
+            <li>
+              Narzędzia: Słownictwo (Denotacja, Konotacja, Rejestr).
+              <span class="text-gray-500 text-sm">(10 min)</span>
+            </li>
+            <li>
+              Narzędzia: Gramatyka i precyzja.
+              <span class="text-gray-500 text-sm">(5 min)</span>
+            </li>
+            <li>
+              Analiza (Ćwiczenie #1).
+              <span class="text-gray-500 text-sm">(5 min)</span>
+            </li>
+            <li>
+              Funkcje Komunikatu (Ekspresywna, Impresywna).
+              <span class="text-gray-500 text-sm">(5 min)</span>
+            </li>
+            <li>
+              Rola pytań + Analiza Typów (Ćwiczenie #2).
+              <span class="text-gray-500 text-sm">(10 min)</span>
+            </li>
+            <li>
+              Wideo: Precyzja w praktyce.
+              <span class="text-gray-500 text-sm">(1 min)</span>
+            </li>
+            <li>
+              Podsumowanie i kluczowe wnioski.
+              <span class="text-gray-500 text-sm">(1 min)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slajd 3: Cele prezentacji -->
+        <div class="slide flex-col justify-center" data-slide="3">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            Cele naszej prezentacji
+          </h2>
+          <ul class="list-disc list-inside space-y-3 text-lg text-gray-700">
+            <li>
+              Zdefiniowanie komunikacji werbalnej i jej fundamentalnych
+              narzędzi.
+            </li>
+            <li>
+              Zrozumienie, jak dobór słów i poprawność gramatyczna wpływają na
+              jasność i odbiór komunikatu.
+            </li>
+            <li>
+              Pokazanie, jak świadomie używać różnych funkcji języka do
+              osiągania celów w rozmowie.
+            </li>
+            <li>
+              Przedstawienie roli pytań jako kluczowego elementu budowania
+              dialogu i zdobywania informacji.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slajd 4: Czym jest komunikacja werbalna? -->
+        <div class="slide flex-col justify-center" data-slide="4">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Czym jest komunikacja werbalna?
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            To proces komunikowania się za pomocą słów – w mowie lub w piśmie.
+            Jest to podstawowy i najbardziej precyzyjny sposób przekazywania
+            złożonych informacji, myśli i idei.
+          </p>
+          <div
+            class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg"
+          >
+            <h3 class="font-semibold">
+              Jej skuteczność zależy od dwóch filarów:
+            </h3>
+            <ul class="list-disc list-inside mt-2">
+              <li><b>Co mówimy</b> (treść, słowa)</li>
+              <li><b>Jak mówimy</b> (struktura, gramatyka, styl)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slajd 5: Wideo 1 (rmPVmqoxFaM) -->
+        <div
+          class="slide flex-col justify-center items-center text-center"
+          data-slide="5"
+        >
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Wideo: Czym jest komunikacja werbalna?
+          </h2>
+          <div
+            class="relative w-full max-w-lg mx-auto"
+            style="padding-top: 56.25%"
+          >
+            <!-- 16:9 Aspect Ratio -->
+            <iframe
+              class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl"
+              src="https://www.youtube.com/embed/rmPVmqoxFaM"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Slajd 6: Narzędzia #1 - Słownictwo (Denotacja/Konotacja) - ZAKTUALIZOWANY PRZYKŁAD -->
+        <div class="slide flex-col justify-center" data-slide="6">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Narzędzia precyzji: Słownictwo cz.1
+          </h2>
+          <p class="text-lg text-gray-700 mb-4">
+            <b>Denotacja</b> to znaczenie podstawowe, słownikowe (np.
+            <span class="font-bold text-blue-600">pies</span> – ssak z rodziny
+            psowatych).
+          </p>
+          <p class="text-lg text-gray-700 mb-4">
+            <b>Konotacja</b> to dodatkowe skojarzenia, ładunek emocjonalny (np.
+            <span class="font-bold text-blue-600">pies</span> – wierny
+            przyjaciel, ale też w przenośni: "ale z niego pies!").
+          </p>
+
+          <div class="mt-6 p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <h4 class="font-semibold text-lg mb-3 text-gray-700">
+              Szybki quiz!
+            </h4>
+            <p class="mb-2">
+              Jaką <b>konotację</b> ma słowo
+              <span class="font-bold text-indigo-600">"władza"</span> w
+              poniższym zdaniu?
+            </p>
+            <p class="italic bg-white p-2 rounded-md shadow-sm mb-3">
+              "Ten menedżer ma zapędy do pokazywania swojej władzy nad
+              pracownikami."
+            </p>
+            <div id="quiz1" class="space-y-2">
+              <button
+                onclick="checkAnswer(this, false, 1)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Neutralną – po prostu zarządzanie
+              </button>
+              <button
+                onclick="checkAnswer(this, true, 1)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Negatywną – dominacja, autorytaryzm
+              </button>
+              <button
+                onclick="checkAnswer(this, false, 1)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Pozytywną – odpowiedzialność, opieka
+              </button>
+            </div>
+            <p id="feedback1" class="feedback text-green-600 font-medium">
+              Dokładnie! Konotacja sugeruje negatywne, autorytarne wykorzystanie
+              pozycji.
+            </p>
+            <p
+              id="feedback1_incorrect"
+              class="feedback text-red-600 font-medium"
+            >
+              Nie do końca. W tym kontekście "władza" ma negatywne skojarzenia z
+              dominacją.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slajd 7: Narzędzia #1 - Słownictwo (Rejestr) -->
+        <div class="slide flex-col justify-center" data-slide="7">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Narzędzia precyzji: Rejestr (Styl Językowy)
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            <b>Rejestr</b> to dobór stylu i słownictwa w zależności od odbiorcy
+            i kontekstu.
+          </p>
+          <div class="space-y-4">
+            <div class="bg-gray-50 p-3 rounded-lg border-l-4 border-indigo-500">
+              <h4 class="font-semibold text-xl text-indigo-700">
+                Formalny (Oficjalny)
+              </h4>
+              <p class="text-sm text-gray-700">
+                Pełna gramatyka, brak skrótów, unikanie kolokwializmów. Używany
+                w biznesie, administracji, korespondencji służbowej. <br />
+                <i class="text-xs"
+                  >Np.: "Szanowny Panie Prezesie, niniejszym informuję o
+                  zakończeniu prac."</i
+                >
+              </p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg border-l-4 border-teal-500">
+              <h4 class="font-semibold text-xl text-teal-700">
+                Nieformalny (Potoczny)
+              </h4>
+              <p class="text-sm text-gray-700">
+                Swobodny ton, skróty, dopuszczalne kolokwializmy. Używany w
+                rozmowach ze znajomymi, rodziną, luźnym czacie. <br />
+                <i class="text-xs"
+                  >Np.: "Cześć! Skończyłem ten projekt, zaraz ci go wyślę."</i
+                >
+              </p>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg border-l-4 border-amber-500">
+              <h4 class="font-semibold text-xl text-amber-700">
+                Specjalistyczny (Żargon)
+              </h4>
+              <p class="text-sm text-gray-700">
+                Użycie terminologii branżowej, zrozumiałe tylko dla ekspertów.
+                Wymagany do precyzyjnej komunikacji w danej dziedzinie. <br />
+                <i class="text-xs"
+                  >Np.: "Musimy skalować backend, bo obecny throughput jest za
+                  niski."</i
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slajd 8: Narzędzia precyzji #2 - Gramatyka -->
+        <div class="slide flex-col justify-center" data-slide="8">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Narzędzia precyzji #2 - Gramatyka
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            To zasady, które łączą słowa w logiczne i zrozumiałe zdania. Błędy
+            gramatyczne mogą prowadzić do nieporozumień.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>
+              <b>Poprawna odmiana:</b> Wpływa na zrozumiałość ("Widziałem te
+              filmy" vs "Widziałem tych filmów").
+            </li>
+            <li>
+              <b>Szyk zdania (Kolejność słów):</b> Kolejność słów zmienia
+              znaczenie!
+              <div class="ml-4 mt-1">
+                <i class="text-red-700 font-semibold"
+                  >"Szef rozmawiał TYLKO Z Anną o podwyżce."</i
+                >
+                (Implikuje: Nikt inny nie rozmawiał.)
+                <br />
+                <i class="text-green-700 font-semibold"
+                  >"Szef rozmawiał Z Anną TYLKO O podwyżce."</i
+                >
+                (Implikuje: Rozmowa dotyczyła tylko tego tematu.)
+              </div>
+            </li>
+            <li>
+              <b>Zdania wielokrotnie złożone:</b> Ich błędna konstrukcja jest
+              częstym źródłem niejasności.
+            </li>
+          </ul>
+          <p
+            class="mt-6 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg text-amber-900"
+          >
+            Gramatyka to szkielet, na którym budujemy naszą wypowiedź.
+          </p>
+        </div>
+
+        <!-- Slajd 9: Analiza: Ukryte znaczenie -->
+        <div class="slide flex-col justify-center" data-slide="9">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Analiza zdań (Ćw. #1)
+          </h2>
+          <p class="text-gray-600 mb-6">
+            Porównajmy pary zdań. Kliknij, aby zobaczyć ukryte znaczenie.
+          </p>
+          <div class="mb-3">
+            <div
+              class="interactive-reveal p-3 border rounded-lg bg-gray-50 hover:bg-gray-100"
+              onclick="toggleExplanation('exp1a')"
+            >
+              A. "Twoja praca jest adekwatna."
+            </div>
+            <div
+              id="exp1a"
+              class="explanation bg-blue-50 text-blue-800 rounded-b-lg"
+            >
+              <b>Interpretacja:</b> Stwierdzenie neutralne, techniczne. Praca
+              spełnia minimalne wymagania, ale bez zachwytu.
+            </div>
+            <div
+              class="interactive-reveal p-3 border rounded-lg bg-gray-50 hover:bg-gray-100 mt-2"
+              onclick="toggleExplanation('exp1b')"
+            >
+              B. "Twoja praca jest dobra."
+            </div>
+            <div
+              id="exp1b"
+              class="explanation bg-blue-50 text-blue-800 rounded-b-lg"
+            >
+              <b>Interpretacja:</b> Pozytywna ocena. Wyraża uznanie i
+              satysfakcję. Komunikat motywujący.
+            </div>
+          </div>
+          <div class="mb-3">
+            <div
+              class="interactive-reveal p-3 border rounded-lg bg-gray-50 hover:bg-gray-100"
+              onclick="toggleExplanation('exp2a')"
+            >
+              A. "Musisz to zrobić na jutro."
+            </div>
+            <div
+              id="exp2a"
+              class="explanation bg-blue-50 text-blue-800 rounded-b-lg"
+            >
+              <b>Interpretacja:</b> Polecenie, tryb rozkazujący. Nie pozostawia
+              miejsca na dyskusję. Może budować dystans.
+            </div>
+            <div
+              class="interactive-reveal p-3 border rounded-lg bg-gray-50 hover:bg-gray-100 mt-2"
+              onclick="toggleExplanation('exp2b')"
+            >
+              B. "Czy dasz radę zrobić to na jutro?"
+            </div>
+            <div
+              id="exp2b"
+              class="explanation bg-blue-50 text-blue-800 rounded-b-lg"
+            >
+              <b>Interpretacja:</b> Pytanie, prośba. Daje odbiorcy poczucie
+              wyboru. Buduje partnerską relację.
+            </div>
+          </div>
+          <div>
+            <p class="font-semibold mt-4 mb-2">Wieloznaczność:</p>
+            <div class="p-3 border rounded-lg bg-gray-50 italic">
+              "Szef zwolnił pracownika, który często się spóźniał, co było dobrą
+              decyzją."
+            </div>
+            <p class="text-sm text-gray-600 mt-2">
+              Pytanie do grupy: Co było dobrą decyzją?
+            </p>
+          </div>
+        </div>
+
+        <!-- Slajd 10: Ukryta moc #1 - Funkcje Komunikatu -->
+        <div class="slide flex-col justify-center" data-slide="10">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Funkcje Komunikatu
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            Oprócz treści, każde zdanie ma cel (funkcję), który kieruje
+            zamiarami nadawcy i odbiorcy.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 text-sm text-center">
+            <div class="p-3 bg-teal-50 rounded-lg">
+              <b>Informatywna:</b> przekazywanie faktów, wiedzy.
+              <br />
+              <i class="text-xs">„Spotkanie jest o 15:00.”</i>
+            </div>
+            <div class="p-3 bg-rose-50 rounded-lg">
+              <b>Ekspresywna:</b> wyrażanie uczuć, emocji.
+              <br />
+              <i class="text-xs">„Jestem tym zdenerwowany/a!”</i>
+            </div>
+            <div class="p-3 bg-sky-50 rounded-lg">
+              <b>Impresywna:</b> nakłanianie, wpływanie na odbiorcę.
+              <br />
+              <i class="text-xs">„Zamknij drzwi.”</i>
+            </div>
+            <div class="p-3 bg-gray-100 rounded-lg">
+              <b>Fatyczna:</b> nawiązywanie/podtrzymywanie kontaktu.
+              <br />
+              <i class="text-xs">„Rozumiesz, co mam na myśli?”</i>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <h4 class="font-semibold text-lg mb-3 text-gray-700">
+              Zadanie: Która funkcja dominuje?
+            </h4>
+            <p class="italic bg-white p-2 rounded-md shadow-sm mb-3">
+              "Wiesz, o czym mówię, prawda? Czekam na Twoją odpowiedź."
+            </p>
+            <p class="mb-2">Jaka jest dominująca funkcja tego zdania?</p>
+            <div id="quiz3" class="space-y-2">
+              <button
+                onclick="checkAnswer(this, false, 3)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Informatywna (Przekazywanie wiadomości)
+              </button>
+              <button
+                onclick="checkAnswer(this, true, 3)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Fatyczna (Sprawdzanie kanału komunikacji)
+              </button>
+              <button
+                onclick="checkAnswer(this, false, 3)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Impresywna (Nakłanianie do działania)
+              </button>
+            </div>
+            <p id="feedback3" class="feedback text-green-600 font-medium">
+              Świetnie! Mówca głównie sprawdza, czy utrzymuje kontakt z odbiorcą
+              ("prawda?", "Czekam na...").
+            </p>
+            <p
+              id="feedback3_incorrect"
+              class="feedback text-red-600 font-medium"
+            >
+              Spróbuj ponownie. Zdanie nie przekazuje nowej informacji, tylko
+              pyta o utrzymanie kontaktu.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slajd 11: Ukryta moc #2 - Rola pytań -->
+        <div class="slide flex-col justify-center" data-slide="11">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Rola pytań</h2>
+          <p class="text-lg text-gray-700 mb-6">
+            Pytania to narzędzie do kierowania rozmową i budowania
+            zaangażowania.
+          </p>
+          <div class="space-y-3">
+            <div>
+              <h4 class="font-semibold text-xl">Pytania zamknięte</h4>
+              <p>
+                Potwierdzają fakty (odp. tak/nie).
+                <i>„Czy projekt został zakończony?”</i>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-xl">Pytania otwarte</h4>
+              <p>
+                Zachęcają do dłuższej wypowiedzi.
+                <i>„Co sądzisz o wynikach tego projektu?”</i>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-xl">Pytania sugerujące</h4>
+              <p>
+                Zawierają tezę, bywają manipulacyjne.
+                <i>„Z pewnością zgadzasz się, że to był błąd?”</i>
+              </p>
+            </div>
+          </div>
+          <p class="mt-4 text-center text-indigo-700 font-semibold">
+            Pytania są kluczem do dialogu.
+          </p>
+        </div>
+
+        <!-- Slajd 12: Analiza: Typy pytań -->
+        <div class="slide flex-col justify-center" data-slide="12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Analiza: Typy pytań (Ćw. #2)
+          </h2>
+          <div class="mt-2 p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <p class="mb-2">
+              Jakim typem pytania jest:
+              <span class="font-bold text-indigo-600"
+                >"Jakie widzisz inne możliwości rozwiązania tego
+                problemu?"</span
+              >?
+            </p>
+            <div id="quiz4" class="space-y-2">
+              <button
+                onclick="checkAnswer(this, true, 4)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Otwarte
+              </button>
+              <button
+                onclick="checkAnswer(this, false, 4)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Zamknięte
+              </button>
+              <button
+                onclick="checkAnswer(this, false, 4)"
+                class="quiz-option w-full text-left p-3 border rounded-lg bg-white"
+              >
+                Sugerujące
+              </button>
+            </div>
+            <p id="feedback4" class="feedback text-green-600 font-medium">
+              Doskonale! To pytanie zachęca do kreatywnej i szerokiej
+              odpowiedzi.
+            </p>
+            <p
+              id="feedback4_incorrect"
+              class="feedback text-red-600 font-medium"
+            >
+              Niezupełnie. To pytanie otwiera dyskusję, a nie ją zamyka.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slajd 13: Wideo 2 (9mP8rR52oec) -->
+        <div
+          class="slide flex-col justify-center items-center text-center"
+          data-slide="13"
+        >
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Wideo: Pytania sugerujące w wywiadach
+          </h2>
+          <div class="w-full max-w-sm mx-auto" style="height: 480px">
+            <iframe
+              class="w-full h-full rounded-xl shadow-xl"
+              src="https://www.youtube.com/embed/9mP8rR52oec"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Slajd 14: Podsumowanie: Kluczowe Wnioski (Zmieniono numer z 15 na 14) -->
+        <div class="slide flex-col justify-center" data-slide="14">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            Podsumowanie: Kluczowe Wnioski
+          </h2>
+          <ul class="list-disc list-inside space-y-4 text-lg text-gray-700">
+            <li>
+              Komunikacja werbalna to <b>świadome posługiwanie się słowem</b>.
+              Precyzja jest kluczowa.
+            </li>
+            <li>
+              Słownictwo i gramatyka to <b>podstawowe narzędzia</b> – ich
+              opanowanie pozwala unikać nieporozumień.
+            </li>
+            <li>
+              Każda wypowiedź ma swoją <b>ukrytą funkcję</b>. Świadomość tego
+              pozwala lepiej rozumieć intencje.
+            </li>
+            <li>
+              Pytania są <b>motorem dialogu</b>. Używanie pytań otwartych i
+              zamkniętych to podstawa dobrych rozmów.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slajd 15: Dziękujemy za Uwagę (Zmieniono numer z 16 na 15) -->
+        <div
+          class="slide flex-col justify-center items-center text-center"
+          data-slide="15"
+        >
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">
+            Dziękujemy za Uwagę
+          </h2>
+          <p class="text-2xl text-gray-600">Czy są jakieś pytania?</p>
+        </div>
+      </div>
+
+      <!-- Nawigacja -->
+      <div class="bg-gray-100 p-4 flex justify-between items-center border-t">
+        <button
+          id="prevBtn"
+          class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors disabled:opacity-50"
+          disabled
+        >
+          &larr; Poprzedni
+        </button>
+        <div id="slide-counter" class="text-gray-600 font-medium">
+          Slajd <span id="current-slide-num">1</span> z
+          <span id="total-slides-num">15</span>
+        </div>
+        <button
+          id="nextBtn"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+        >
+          Następny &rarr;
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let currentSlide = 1;
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = 15; // ZAKTUALIZOWANA LICZBA SLAJDÓW (15)
+
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const currentSlideNum = document.getElementById("current-slide-num");
+      const totalSlidesNum = document.getElementById("total-slides-num");
+
+      function showSlide(slideNumber) {
+        slides.forEach((slide) => {
+          if (parseInt(slide.dataset.slide) === slideNumber) {
+            slide.classList.add("active");
+          } else {
+            slide.classList.remove("active");
+          }
+        });
+        currentSlideNum.textContent = slideNumber;
+        totalSlidesNum.textContent = totalSlides;
+        prevBtn.disabled = slideNumber === 1;
+        nextBtn.disabled = slideNumber === totalSlides;
+      }
+
+      nextBtn.addEventListener("click", () => {
+        if (currentSlide < totalSlides) {
+          currentSlide++;
+          showSlide(currentSlide);
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentSlide > 1) {
+          currentSlide--;
+          showSlide(currentSlide);
+        }
+      });
+
+      // Inicjalizacja
+      totalSlidesNum.textContent = totalSlides;
+      showSlide(currentSlide);
+
+      // --- Logika Quizów ---
+      function checkAnswer(button, isCorrect, quizNumber) {
+        const quizContainer = document.getElementById("quiz" + quizNumber);
+        const options = quizContainer.querySelectorAll(".quiz-option");
+
+        options.forEach((opt) => {
+          opt.disabled = true;
+          opt.classList.remove("correct", "incorrect");
+        });
+
+        const correctFeedback = document.getElementById(
+          "feedback" + quizNumber
+        );
+        const incorrectFeedback = document.getElementById(
+          "feedback" + quizNumber + "_incorrect"
+        );
+
+        if (correctFeedback) correctFeedback.classList.remove("show");
+        if (incorrectFeedback) incorrectFeedback.classList.remove("show");
+
+        if (isCorrect) {
+          button.classList.add("correct");
+          if (correctFeedback) correctFeedback.classList.add("show");
+        } else {
+          button.classList.add("incorrect");
+          if (incorrectFeedback) incorrectFeedback.classList.add("show");
+          options.forEach((opt) => {
+            if (opt.onclick.toString().includes("true")) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+      }
+
+      // --- Logika Elementów Interaktywnych ---
+      function toggleExplanation(elementId) {
+        const explanation = document.getElementById(elementId);
+        explanation.classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>

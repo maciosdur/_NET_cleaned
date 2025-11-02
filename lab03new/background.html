@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tła obrazkowe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li>
+          <a href="#">Tekst i Rozmiary</a>
+          <ul>
+            <li><a href="sizes.html">Jednostki tekstu</a></li>
+            <li><a href="text.html">Formatowanie tekstu</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Wygląd & Tło</a>
+          <ul>
+            <li><a href="background.html">Tła stron</a></li>
+            <li><a href="border.html">Ramki (border)</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Układ</a>
+          <ul>
+            <li><a href="box.html">Box model i pozycjonowanie</a></li>
+            <li><a href="tables.html">Tabele</a></li>
+          </ul>
+        </li>
+        <li><a href="selectors.html">Selektory</a></li>
+        <li><a href="pseudo.html">Pseudoklasy i pseudoelementy</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Różne sposoby ustawienia tła</h1>
+
+      <section>
+        <h2>1. Pełne tło (cover)</h2>
+        <div class="bg-cover demo-box">
+          background-size: cover; background-position: center;
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Powtarzanie (repeat)</h2>
+        <div class="bg-repeat demo-box">background-repeat: repeat;</div>
+      </section>
+
+      <section>
+        <h2>3. Pozycja i brak powtarzania (no-repeat, position)</h2>
+        <div class="bg-no-repeat demo-box">
+          background-repeat: no-repeat; background-position: right top;
+        </div>
+      </section>
+
+      <section>
+        <h2>
+          4. Powtarzanie tylko w połowie wysokości strony (przykład
+          ograniczenia)
+        </h2>
+        <p>
+          Przykład realizowany przez ustawienie background-size tak, aby obrazek
+          zajmował 50% wysokości i powtarzał się w poziomie.
+        </p>
+        <div class="bg-half demo-box">
+          background-size: auto 50%; background-repeat: repeat-x;
+          background-position: top center;
+        </div>
+      </section>
+
+      <section>
+        <h2>5. Rozciąganie obrazu (contain)</h2>
+        <div class="bg-contain demo-box">background-size: contain;</div>
+      </section>
+    </main>
+  </body>
+</html>

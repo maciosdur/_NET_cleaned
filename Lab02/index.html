@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lab02 — elementy HTML5</title>
+    <meta
+      name="description"
+      content="Przykładowa strona pokazująca podstawowe elementy HTML5: listy, tabele, formularze i encje."
+    />
+    <meta name="author" content="Maciek" />
+    <meta name="keywords" content="HTML5, listy, tabela, formularz, encje" />
+    <meta name="robots" content="index,follow" />
+  </head>
+  <body id="top">
+    <header>
+      <h1>Przykładowa strona — HTML5 (Lab02)</h1>
+      <nav>
+        <a href="#special-chars">Znaki specjalne</a> |
+        <a href="#formatting">Formatowanie tekstu</a> |
+        <a href="#lists">Listy</a> |
+        <a href="#nested-list">Listy zagnieżdżone</a> |
+        <a href="#table">Tabela</a> | <a href="#form">Formularz</a> |
+        <a href="#top">Na początek</a>
+      </nav>
+    </header>
+
+    <main>
+      <article id="special-chars">
+        <h2>Znaki specjalne</h2>
+        <p>Pięć różnych encji: &lt; &gt; &amp; &copy; &euro;</p>
+      </article>
+
+      <article id="formatting">
+        <h2>Przykłady formatowania tekstu</h2>
+        <p>
+          <strong>Silne wyróżnienie (strong)</strong> — semantyczne pogrubienie.
+        </p>
+        <p><em>Kursywa (em)</em> — semantyczne zaakcentowanie.</p>
+        <p>
+          <b>Pogrubienie (&lt;b&gt;)</b> — techniczne pogrubienie (przestarzałe
+          do stylizacji).
+        </p>
+        <p><i>Kursywa (&lt;i&gt;)</i> — techniczna kursywa.</p>
+        <p><mark>Podświetlenie (mark)</mark> — zaznaczony fragment tekstu.</p>
+      </article>
+
+      <section id="lists">
+        <h2>Listy</h2>
+
+        <h3>Nieuporządkowana (ul)</h3>
+        <ul>
+          <li>Element A</li>
+          <li>Element B</li>
+          <li>Element C</li>
+        </ul>
+
+        <h3>Uporządkowana (ol)</h3>
+        <ol>
+          <li>Pierwszy</li>
+          <li>Drugi</li>
+          <li>Trzeci</li>
+        </ol>
+
+        <h3>Lista definicji (dl)</h3>
+        <dl>
+          <dt>HTML</dt>
+          <dd>Język znaczników stron WWW.</dd>
+          <dt>CSS</dt>
+          <dd>Arkusze stylów.</dd>
+          <dt>JS</dt>
+          <dd>JavaScript — skrypty po stronie klienta.</dd>
+        </dl>
+      </section>
+
+      <section id="nested-list">
+        <h2>Listy zagnieżdżone</h2>
+        <p>
+          Przykład listy nieuporządkowanej z co najmniej 4 poziomami i łączną
+          liczbą elementów ≥ 10.
+        </p>
+
+        <ul>
+          <li>Poziom 1 - A</li>
+          <li>
+            Poziom 1 - B
+            <ul>
+              <li>Poziom 2 - B.1</li>
+              <li>
+                Poziom 2 - B.2
+                <ul>
+                  <li>Poziom 3 - B.2.a</li>
+                  <li>
+                    Poziom 3 - B.2.b
+                    <ul>
+                      <li>Poziom 4 - B.2.b.i</li>
+                      <li>Poziom 4 - B.2.b.ii</li>
+                    </ul>
+                  </li>
+                  <li>Poziom 3 - B.2.c</li>
+                </ul>
+              </li>
+              <li>Poziom 2 - B.3</li>
+            </ul>
+          </li>
+          <li>Poziom 1 - C</li>
+        </ul>
+      </section>
+
+      <section id="table">
+        <h2>Tabela — z łączeniem komórek</h2>
+
+        <table>
+          <caption>
+            Tabela demonstracyjna z łączeniem komórek
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">N</th>
+              <th scope="col">Kol A</th>
+              <th scope="col">Kol B</th>
+              <th scope="col">Kol C</th>
+              <th scope="col">Kol D</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="2">1-2</td>
+              <td colspan="2">Scalono kol A i B</td>
+              <td>Komórka C</td>
+              <td>Komórka D</td>
+            </tr>
+            <tr>
+              <td>Kol A (drugi wiersz)</td>
+              <td>Kol B (drugi wiersz)</td>
+              <td colspan="2">Scalone C+D</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Kom A</td>
+              <td>Kom B</td>
+              <td>Kom C</td>
+              <td>Kom D</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td colspan="3">Szeroka komórka A-C</td>
+              <td>Kom D</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Kom A</td>
+              <td>Kom B</td>
+              <td>Kom C</td>
+              <td>Kom D</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                Stopka tabeli — podsumowanie (scalono wszystkie kolumny)
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <section id="form">
+        <h2>Formularz</h2>
+        <p>
+          Formularz zawiera różne typy pól. Po wysłaniu (submit) formularz nie
+          przechodzi nigdzie (action="#").
+        </p>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+          <!-- 1 text -->
+          <div>
+            <label for="fname">Imię (text):</label>
+            <input type="text" id="fname" name="fname" />
+          </div>
+
+          <!-- 2 email -->
+          <div>
+            <label for="email">E-mail (email):</label>
+            <input type="email" id="email" name="email" />
+          </div>
+
+          <!-- 3 password -->
+          <div>
+            <label for="pwd">Hasło (password):</label>
+            <input type="password" id="pwd" name="pwd" />
+          </div>
+
+          <!-- 4 tel -->
+          <div>
+            <label for="tel">Telefon (tel):</label>
+            <input type="tel" id="tel" name="tel" />
+          </div>
+
+          <!-- 5 number -->
+          <div>
+            <label for="age">Wiek (number):</label>
+            <input type="number" id="age" name="age" min="0" max="120" />
+          </div>
+
+          <!-- 6 url -->
+          <div>
+            <label for="website">Strona (url):</label>
+            <input type="url" id="website" name="website" />
+          </div>
+
+          <!-- 7 search -->
+          <div>
+            <label for="search">Szukaj (search):</label>
+            <input type="search" id="search" name="search" />
+          </div>
+
+          <!-- 8 date & 9 time -->
+          <div>
+            <label for="bday">Data urodzenia (date):</label>
+            <input type="date" id="bday" name="bday" />
+          </div>
+          <div>
+            <label for="time">Preferowana godzina (time):</label>
+            <input type="time" id="time" name="time" />
+          </div>
+
+          <!-- 10 color -->
+          <div>
+            <label for="favcolor">Ulubiony kolor (color):</label>
+            <input type="color" id="favcolor" name="favcolor" />
+          </div>
+
+          <!-- 11 file -->
+          <div>
+            <label for="avatar">Avatar (file):</label>
+            <input type="file" id="avatar" name="avatar" />
+          </div>
+
+          <!-- 12 range -->
+          <div>
+            <label for="satisfaction">Satysfakcja (range):</label>
+            <input
+              type="range"
+              id="satisfaction"
+              name="satisfaction"
+              min="0"
+              max="10"
+            />
+          </div>
+
+          <!-- checkbox & radio -->
+          <div>
+            <label
+              ><input type="checkbox" name="newsletter" /> Chcę
+              newsletter</label
+            >
+          </div>
+          <div>
+            <label
+              ><input type="radio" name="contact" value="email" /> Kontakt
+              e-mail</label
+            >
+            <label
+              ><input type="radio" name="contact" value="phone" /> Kontakt
+              telefon</label
+            >
+          </div>
+
+          <!-- hidden -->
+          <input type="hidden" name="form-id" value="lab02" />
+
+          <!-- textarea -->
+          <div>
+            <label for="notes">Notatki (textarea):</label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+          </div>
+
+          <!-- select -->
+          <div>
+            <label for="country">Kraj (select):</label>
+            <select id="country" name="country">
+              <option value="">-- wybierz --</option>
+              <option value="pl">Polska</option>
+              <option value="de">Niemcy</option>
+              <option value="uk">Wielka Brytania</option>
+            </select>
+          </div>
+
+          <div>
+            <button type="submit">Wyślij</button>
+            <button type="reset">Wyczyść</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>Przykładowa strona demonstracyjna — bez CSS i JS.</p>
+    </footer>
+  </body>
+</html>

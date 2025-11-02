@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jednostki tekstu — em, px, pt, %</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li>
+          <a href="#">Tekst i Rozmiary</a>
+          <ul>
+            <li><a href="sizes.html">Jednostki tekstu</a></li>
+            <li><a href="text.html">Formatowanie tekstu</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Wygląd & Tło</a>
+          <ul>
+            <li><a href="background.html">Tła stron</a></li>
+            <li><a href="border.html">Ramki (border)</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Układ</a>
+          <ul>
+            <li><a href="box.html">Box model i pozycjonowanie</a></li>
+            <li><a href="tables.html">Tabele</a></li>
+          </ul>
+        </li>
+        <li><a href="selectors.html">Selektory</a></li>
+        <li><a href="pseudo.html">Pseudoklasy i pseudoelementy</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Jednostki wielkości tekstu</h1>
+
+      <section>
+        <h2>1. em (relatywne do elementu rodzica)</h2>
+        <p class="size-em">
+          To jest tekst ustawiony na <code>font-size: 1.5em;</code>. Jeśli
+          rodzic ma 16px, to 1.5em = 24px.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. px (piksele)</h2>
+        <p class="size-px">
+          To jest tekst ustawiony na <code>font-size: 20px;</code>
+        </p>
+      </section>
+
+      <section>
+        <h2>3. pt (punkty drukarskie)</h2>
+        <p class="size-pt">
+          To jest tekst ustawiony na <code>font-size: 14pt;</code> (przydatne
+          przy wydruku).
+        </p>
+      </section>
+
+      <section>
+        <h2>4. % (procent wielkości elementu rodzica)</h2>
+        <div class="parent-100" style="font-size: 20px">
+          <p class="size-percent">
+            To jest tekst ustawiony na <code>font-size: 120%;</code> —
+            odniesienie do 20px rodzica.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

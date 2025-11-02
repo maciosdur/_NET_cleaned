@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Box model i pozycjonowanie</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">Menu</a>
+          <ul>
+            <li><a href="index.html">Start</a></li>
+
+            <li>
+              <a href="#">Tekst i Rozmiary</a>
+              <ul>
+                <li><a href="sizes.html">Jednostki tekstu</a></li>
+                <li><a href="text.html">Formatowanie tekstu</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">Wygląd & Tło</a>
+              <ul>
+                <li><a href="background.html">Tła stron</a></li>
+                <li><a href="border.html">Ramki (border)</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">Układ</a>
+              <ul>
+                <li><a href="box.html">Box model i pozycjonowanie</a></li>
+                <li><a href="tables.html">Tabele</a></li>
+              </ul>
+            </li>
+
+            <li><a href="selectors.html">Selektory</a></li>
+            <li><a href="pseudo.html">Pseudoklasy i pseudoelementy</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Box model i pozycjonowanie</h1>
+
+      <section>
+        <h2>Box model — margin, padding, width, height</h2>
+        <div class="box-model">
+          <p>content</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Pozycjonowanie: relative + absolute</h2>
+        <div class="pos-relative" style="height: 260px">
+          <div class="pos-absolute" style="top: 30px; left: 30px; background: #3498db">
+            Góra-lewo
+          </div>
+          <div class="pos-absolute" style="top: 10px; right: 100px; background: #27ae60">
+            Góra-prawo
+          </div>
+          <div class="pos-absolute" style="bottom: 40px; right: 60px; background: #9b59b6">
+            Dół-lewo
+          </div>
+          <div class="pos-absolute" style="bottom: 15px; right: 15px; background: #e74c3c">
+            Dół-prawo
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Pozycjonowanie: fixed</h2>
+        <div class="fixed-example">fixed</div>
+      </section>
+
+      <section>
+        <h2>Float</h2>
+        <div class="float-left">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Beatae maxime sunt a quidem perferendis
+        </div>
+        <p>
+          (float) Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Beatae maxime sunt a quidem perferendis itaque cumque unde? Quisquam
+          asperiores voluptas ipsum aspernatur earum dolores incidunt. Facere
+          enim a doloremque iusto?.Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Beatae maxime sunt a quidem perferendis itaque
+          cumque unde? Quisquam asperiores voluptas ipsum aspernatur earum
+          dolores incidunt. Facere enim a doloremque iusto?.Lorem ipsum dolor
+          sit amet consectetur adipisicing elit. Beatae maxime sunt a quidem
+          perferendis itaque cumque unde? Quisquam asperiores voluptas ipsum
+          aspernatur earum dolores incidunt. Facere enim a doloremque iusto?.
+        </p>
+        <div style="clear: both"></div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lista 3 — HTML5 i CSS3 (demonstracja osadzania stylów)</title>
+
+    <style>
+      header.embedded h1 {
+        margin: 0;
+        padding: 12px;
+        background: linear-gradient(90deg, #2c3e50, #4ca1af);
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <header class="embedded">
+      <h1
+        style="font-size: 1.6rem; border-bottom: 4px solid rgba(0, 0, 0, 0.1);   text-align: center;"
+      >
+        Lista 3 — HTML5 i CSS3
+      </h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="#">Menu</a>
+          <ul>
+            <li><a href="index.html">Start</a></li>
+
+            <li>
+              <a href="#">Tekst i Rozmiary</a>
+              <ul>
+                <li><a href="sizes.html">Jednostki tekstu</a></li>
+                <li><a href="text.html">Formatowanie tekstu</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">Wygląd & Tło</a>
+              <ul>
+                <li><a href="background.html">Tła stron</a></li>
+                <li><a href="border.html">Ramki (border)</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">Układ</a>
+              <ul>
+                <li><a href="box.html">Box model i pozycjonowanie</a></li>
+                <li><a href="tables.html">Tabele</a></li>
+              </ul>
+            </li>
+
+            <li><a href="selectors.html">Selektory</a></li>
+            <li><a href="pseudo.html">Pseudoklasy i pseudoelementy</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+
+    <main>
+      <section>
+        <h2>Instrukcja</h2>
+        <p>
+          To jest strona główna. Używamy tutaj demonstracyjnie:
+          <strong>inline</strong> (element h1),
+          <strong>osadzonego &lt;style&gt;</strong> (nagłówek) oraz
+          <strong>zewnętrznego</strong> arkusza stylów połączonego linkiem.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,359 @@
+/* ===========================
+   style.css — zewnętrzny arkusz
+   Wszystkie reguły zadania (poza demonstracją w index.html)
+   =========================== */
+
+/* --- Reset / podstawy --- */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+main {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- NAV / menu rozwijane (reguły bazowane na strukturze HTML, nie klasach listy) ---
+   wymaganie: reguły powinny bazować na strukturze elementów listy (nav ul, nav ul li, itp.) */
+nav {
+  background: #2c3e50;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+nav ul li {
+  position: relative;
+}
+nav > ul > li {
+  display: block;
+} /* pierwsze poziomy */
+nav a {
+  display: block;
+  padding: 10px 14px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+nav > ul > li {
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* submenu - będą listami zagnieżdżonymi */
+nav ul li ul {
+  display: none; /* ukryte dopóki nie hover rodzica */
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 180px;
+  background: #34495e;
+  z-index: 1000;
+  padding: 0;
+}
+nav ul li:hover > ul {
+  display: block;
+} /* pokaż submenu przy hover rodzica (oparte o strukturę) */
+nav ul li ul li {
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* --- Punkt 2: Rozmiary tekstu (em, px, pt, %) --- */
+.size-em {
+  font-size: 1.5em;
+} /* relatywnie do font-size rodzica */
+.size-px {
+  font-size: 20px;
+} /* piksele */
+.size-pt {
+  font-size: 14pt;
+} /* punkty (druk) */
+.size-percent {
+  font-size: 120%;
+} /* procent rodzica */
+
+/* dodatkowy przykład: zagnieżdżony kontekst em */
+.parent-100 {
+  font-size: 20px;
+} /* parent for percent/em demo */
+
+/* --- Punkt 3: Tła obrazkowe --- */
+/* demo-box - elementy używane na stronie background.html */
+.demo-box {
+  height: 160px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 12px 0 24px 0;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* cover: obraz wypełnia cały box */
+.bg-cover {
+  background-image: url("https://picsum.photos/id/1018/1200/800");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* repeat: prosty pattern będący powtarzanym obrazkiem */
+.bg-repeat {
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  background-repeat: repeat;
+  background-position: left top;
+  color: #222;
+}
+
+/* no-repeat + position */
+.bg-no-repeat {
+  background-image: url("https://picsum.photos/id/1025/600/400");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 200px auto;
+  color: #222;
+}
+
+/* ograniczenie powtarzania do połowy wysokości (przykład):
+   używamy background-size: auto 50% oraz repeat-x, aby obraz powtarzał się w poziomie i miał 50% wysokości */
+.bg-half {
+  background-image: url("https://picsum.photos/seed/pattern/400/200");
+  background-size: auto 50%;
+  background-repeat: repeat-x;
+  background-position: top center;
+  color: #222;
+}
+
+/* contain: rozciągnięcie tak, by cały obraz był widoczny */
+.bg-contain {
+  background-image: url("https://picsum.photos/id/1035/800/600");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #ececec;
+  color: #222;
+}
+
+/* --- Punkt 4: selektory (przykłady w selectors.html) --- */
+/* selektor elementu */
+p {
+  line-height: 1.45;
+}
+
+/* selektor klasy */
+.example-class {
+  background: #f9f9f9;
+  padding: 10px;
+  border-left: 4px solid #2980b9;
+}
+
+/* selektor id */
+#example-id {
+  color: #8e44ad;
+  padding: 8px;
+}
+
+/* zagnieżdżenie (descendant) */
+.outer .inner p {
+  background: #f0f8ff;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* child selector */
+ul > li {
+  margin: 6px 0;
+}
+
+/* --- Punkt 5: box-model + pozycjonowanie + float --- */
+.box-model {
+  width: 220px;
+  height: 120px;
+  padding: 20px;
+  margin: 18px;
+  border: 3px solid #34495e;
+  background: #ecf0f1;
+}
+
+/* relative + absolute */
+.pos-relative {
+  position: relative;
+  background: #fafafa;
+  border: 1px dashed #bbb;
+  padding: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin: 10px 0;
+}
+.pos-relative .pos-absolute {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: #e74c3c;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+/* fixed (przyklejony do dołu okna) */
+.fixed-example {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  background: rgba(44, 62, 80, 0.9);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  z-index: 2000;
+}
+
+/* float (przykład) */
+.float-left {
+  float: left;
+  width: 180px;
+  margin: 0 0px 0px 0;
+  padding: 10px;
+  background: #dff0d8;
+  border: 1px solid #b2d8a7;
+}
+
+/* --- Punkt 6: formatowanie tekstu --- */
+.text-sans {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+.text-serif-bold {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+.text-large {
+  font-size: 22px;
+  line-height: 1.8;
+}
+.text-deco {
+  text-decoration: underline overline line-through;
+  text-decoration-color: #3498db;
+  text-decoration-thickness: 2px;
+}
+.text-transform {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Punkt 7: border-width, border-style, border-color --- */
+.demo-border {
+  border-width: 6px;
+  border-style: dashed;
+  border-color: #d35400;
+  padding: 12px;
+  margin: 12px 0;
+}
+.demo-border-2 {
+  border: 4px solid rgba(44, 62, 80, 0.8);
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* --- Punkt 8: stylowanie tabel --- */
+.table-basic {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 15px;
+}
+.table-basic caption {
+  caption-side: top;
+  font-weight: 700;
+  padding: 8px 0;
+}
+.table-basic th,
+.table-basic td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+.table-basic thead th {
+  background: #34495e;
+  color: #fff;
+  font-weight: 600;
+}
+.table-basic tbody tr:nth-child(even) {
+  background: #f6f8fa;
+}
+.table-basic tbody tr:hover {
+  background: #e8f0f8;
+}
+
+/* dodatkowe: pierwszy td pogrubiony */
+.table-basic td:first-child {
+  font-weight: 700;
+}
+
+/* --- Punkt 9: pseudoklasy i pseudoelementy (inne niż typowe przykłady wykładowe) --- */
+/* PSEUDOKLASA :focus (dla input) */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+  border: 2px solid #2ecc71;
+}
+
+/* PSEUDOKLASA :checked (zmiana wyglądu tekstu obok zaznaczonego checkboxa) */
+/* Pozycja: checkbox + element sąsiadujący (adjacent sibling) - przykład użycia :checked */
+input[type="checkbox"]:checked ~ .checked-target {
+  color: #27ae60;
+  font-weight: 700;
+}
+
+/* PSEUDOELEMENT ::first-line */
+.firstline::first-line {
+  font-weight: 700;
+  font-size: 1.15em;
+  color: #c0392b;
+}
+
+/* PSEUDOELEMENT ::marker (styl list markerów) */
+.marker-example li::marker {
+  font-size: 1.25em;
+  color: #2980b9;
+}
+
+/* --- Drobne style globalne stopka/nagłówek --- */
+h1 {
+  font-size: 1.6rem;
+  margin: 12px 0;
+}
+h2 {
+  font-size: 1.2rem;
+  margin: 10px 0 6px 0;
+  color: #2c3e50;
+}
+p {
+  margin: 8px 0;
+}
+
+/* --- Responsywność prostego menu: zamień w kolumnę na bardzo wąskich ekranach --- */
+@media (max-width: 720px) {
+  nav ul {
+    flex-direction: column;
+  }
+  nav ul li ul {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
