@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Lista 3 — HTML5 i CSS3 (demonstracja osadzania stylów)</title>
 
-    <!-- 2) OSADZONY ARKUSZ STYLU (embedded) - przykład (tylko w celu demonstracji punktu 1) -->
     <style>
-      /* osadzone style - tylko demonstracja sposobu wstawiania w head */
       header.embedded h1 {
         margin: 0;
         padding: 12px;
@@ -17,48 +15,56 @@
       }
     </style>
 
-    <!-- 3) ZALĄCZONE ZEWNĘTRZNE STYLY - style.css zawiera większość reguł (wymóg zadania) -->
+
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <!-- 1) INLINE style - przykładowy element z atrybutem style -->
     <header class="embedded">
       <h1
-        style="font-size: 1.6rem; border-bottom: 4px solid rgba(0, 0, 0, 0.1)"
+        style="font-size: 1.6rem; border-bottom: 4px solid rgba(0, 0, 0, 0.1);   text-align: center;"
       >
         Lista 3 — HTML5 i CSS3
       </h1>
     </header>
 
-    <!-- NAV: użyjemy <nav> z listami (menu będzie obsługiwane przez reguły oparte na strukturze elementów) -->
     <nav>
       <ul>
-        <li><a href="index.html">Start</a></li>
         <li>
-          <a href="#">Tekst i Rozmiary</a>
+          <a href="#">Menu</a>
           <ul>
-            <li><a href="sizes.html">Jednostki tekstu</a></li>
-            <li><a href="text.html">Formatowanie tekstu</a></li>
+            <li><a href="index.html">Start</a></li>
+
+            <li>
+              <a href="#">Tekst i Rozmiary</a>
+              <ul>
+                <li><a href="sizes.html">Jednostki tekstu</a></li>
+                <li><a href="text.html">Formatowanie tekstu</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">Wygląd & Tło</a>
+              <ul>
+                <li><a href="background.html">Tła stron</a></li>
+                <li><a href="border.html">Ramki (border)</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">Układ</a>
+              <ul>
+                <li><a href="box.html">Box model i pozycjonowanie</a></li>
+                <li><a href="tables.html">Tabele</a></li>
+              </ul>
+            </li>
+
+            <li><a href="selectors.html">Selektory</a></li>
+            <li><a href="pseudo.html">Pseudoklasy i pseudoelementy</a></li>
           </ul>
         </li>
-        <li>
-          <a href="#">Wygląd & Tło</a>
-          <ul>
-            <li><a href="background.html">Tła stron</a></li>
-            <li><a href="border.html">Ramki (border)</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Układ</a>
-          <ul>
-            <li><a href="box.html">Box model i pozycjonowanie</a></li>
-            <li><a href="tables.html">Tabele</a></li>
-          </ul>
-        </li>
-        <li><a href="selectors.html">Selektory</a></li>
-        <li><a href="pseudo.html">Pseudoklasy i pseudoelementy</a></li>
       </ul>
     </nav>
+
 
     <main>
       <section>
