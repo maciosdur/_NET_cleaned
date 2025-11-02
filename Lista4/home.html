@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tabliczka Mnożenia</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f4f8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+
+      form {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      input[type="number"] {
+        width: 60px;
+        padding: 5px;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+
+      button {
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        margin-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #3498db;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 10px 15px;
+        border: 1px solid #bdc3c7;
+        text-align: center;
+      }
+
+      th.header {
+        background-color: #34495e;
+        color: #ecf0f1;
+      }
+
+      td.even {
+        background-color: #1abc9c;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      td.odd {
+        background-color: #e74c3c;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      p.alert {
+        color: #c0392b;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      a {
+        margin-bottom: 20px;
+        text-decoration: none;
+        color: #2980b9;
+        font-weight: bold;
+      }
+
+      a:hover {
+        color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="2ndtasl.html">Przejdź do drugiej strony</a>
+
+    <h1>Generuj tabliczkę mnożenia</h1>
+
+    <form>
+      <label for="number">Podaj liczbę w zakresie 5-20:</label>
+      <input type="number" id="number" name="number" value="5" />
+    </form>
+
+    <button type="button" id="button">Generuj tabelę</button>
+
+    <script>
+      document.getElementById("button").addEventListener("click", function () {
+        // Usunięcie poprzedniej tabeli i komunikatu
+        const oldTable = document.querySelector("table");
+        if (oldTable) oldTable.remove();
+
+        const oldAlert = document.querySelector(".alert");
+        if (oldAlert) oldAlert.remove();
+
+        var passedNumber = parseInt(document.getElementById("number").value);
+
+        if (isNaN(passedNumber) || passedNumber < 5 || passedNumber > 20) {
+          var param = document.createElement("p");
+          param.innerText = "Podana wartość jest nieprawidłowa, przyjęto n=5";
+          param.classList.add("alert");
+          document.body.appendChild(param);
+          passedNumber = 5;
+        }
+
+        const numbers = [];
+        for (var i = 0; i < passedNumber; i++) {
+          numbers.push(Math.floor(Math.random() * 99) + 1);
+        }
+
+        var table = document.createElement("table");
+        document.body.appendChild(table);
+
+        var thead = document.createElement("thead");
+        table.appendChild(thead);
+
+        var tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+
+        // Nagłówek kolumn
+        var headerRow = document.createElement("tr");
+        thead.appendChild(headerRow);
+
+        var emptyHeader = document.createElement("th");
+        emptyHeader.classList.add("header");
+        emptyHeader.textContent = "";
+        headerRow.appendChild(emptyHeader);
+
+        for (var i = 0; i < passedNumber; i++) {
+          var colHeader = document.createElement("th");
+          colHeader.classList.add("header");
+          colHeader.textContent = numbers[i];
+          headerRow.appendChild(colHeader);
+        }
+
+        // Wiersze z wynikami
+        for (var i = 0; i < passedNumber; i++) {
+          var row = document.createElement("tr");
+          tbody.appendChild(row);
+
+          var rowHeader = document.createElement("th");
+          rowHeader.classList.add("header");
+          rowHeader.textContent = numbers[i];
+          row.appendChild(rowHeader);
+
+          for (var j = 0; j < passedNumber; j++) {
+            var result = numbers[i] * numbers[j];
+            var cell = document.createElement("td");
+            cell.textContent = result;
+
+            if (result % 2 === 0) {
+              cell.classList.add("even");
+            } else {
+              cell.classList.add("odd");
+            }
+
+            row.appendChild(cell);
+
+            // Pokazanie alertu po kliknięciu w komórkę
+            (function (result) {
+              cell.addEventListener("click", function () {
+                alert(result);
+              });
+            })(result);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
