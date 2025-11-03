@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tabliczka Mnożenia</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f4f8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+
+      form {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      input[type="number"] {
+        width: 60px;
+        padding: 5px;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+
+      button {
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        margin-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #3498db;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 10px 15px;
+        border: 1px solid #bdc3c7;
+        text-align: center;
+      }
+
+      th.header {
+        background-color: #34495e;
+        color: #ecf0f1;
+      }
+
+      td.zero {
+        background-color: #1abc9c;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      td.one {
+        background-color: #e74c3c;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      td.two {
+        background-color: #ce3491;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      p.alert {
+        color: #c0392b;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      a {
+        margin-bottom: 20px;
+        text-decoration: none;
+        color: #2980b9;
+        font-weight: bold;
+      }
+
+      a:hover {
+        color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="2ndtasl.html">Przejdź do drugiej strony</a>
+
+    <h1>Generuj tabliczkę mnożenia</h1>
+
+    <form>
+      <label for="number">Podaj liczbę w zakresie 5-20:</label>
+      <input type="number" id="number" name="number" value="5" />
+    </form>
+
+    <button type="button" id="button">Generuj tabelę</button>
+
+    
+    <div id="table-container"></div>
+
+    <!-- document.getElementById("button").addEventListener("click", function () {
+    var tableContainer = document.getElementById("table-container");
+
+    tableContainer.innerHTML = "";
+
+    var passedNumber = parseInt(document.getElementById("number").value);
+
+    if (isNaN(passedNumber) || passedNumber < 5 || passedNumber > 20) {
+        var param = document.createElement("p");
+        param.innerText = "Podana wartość jest nieprawidłowa, przyjęto n=5";
+        param.classList.add("alert");
+        tableContainer.appendChild(param);
+        passedNumber = 5;
+    }
+
+    const numbers = [];
+    for (var i = 0; i < passedNumber; i++) {
+        numbers.push(Math.floor(Math.random() * 99) + 1);
+    }
+
+    var table = document.createElement("table");
+    tableContainer.appendChild(table);
+
+    var thead = document.createElement("thead");
+    table.appendChild(thead);
+    var tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+
+    var headerRow = document.createElement("tr");
+    thead.appendChild(headerRow);
+
+    var emptyHeader = document.createElement("th");
+    emptyHeader.classList.add("header");
+    emptyHeader.textContent = "";
+    headerRow.appendChild(emptyHeader);
+
+    for (var i = 0; i < passedNumber; i++) {
+        var colHeader = document.createElement("th");
+        colHeader.classList.add("header");
+        colHeader.textContent = numbers[i];
+        headerRow.appendChild(colHeader);
+    }
+
+    for (var i = 0; i < passedNumber; i++) {
+        var row = document.createElement("tr");
+        tbody.appendChild(row);
+
+        var rowHeader = document.createElement("th");
+        rowHeader.classList.add("header");
+        rowHeader.textContent = numbers[i];
+        row.appendChild(row);
+
+        for (var j = 0; j < passedNumber; j++) {
+            var result = numbers[i] * numbers[j];
+            var cell = document.createElement("td");
+            cell.textContent = result;
+
+            if (result % 3 === 0) cell.classList.add("zero");
+            else if (result % 3 === 1) cell.classList.add("one");
+            else cell.classList.add("two");
+
+            row.appendChild(cell);
+        }
+    }
+}); -->
+
+
+    <script>
+      document.getElementById("button").addEventListener("click", function () {
+        var tableContainer = document.getElementById("table-container");
+
+        tableContainer.innerHTML = "";
+
+        var passedNumber = parseInt(document.getElementById("number").value);
+
+        if (isNaN(passedNumber) || passedNumber < 5 || passedNumber > 20) {
+            var param = document.createElement("p");
+            param.innerText = "Podana wartość jest nieprawidłowa, przyjęto n=5";
+            param.classList.add("alert");
+            tableContainer.appendChild(param);
+            passedNumber = 5;
+        }
+
+        const numbers = [];
+        for (var i = 0; i < passedNumber; i++) {
+            numbers.push(Math.floor(Math.random() * 99) + 1);
+        }
+
+        var table = document.createElement("table");
+        tableContainer.appendChild(table);
+
+        
+        var thead = document.createElement("thead");
+        table.appendChild(thead);
+
+        var tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+
+        var headerRow = document.createElement("tr");
+        thead.appendChild(headerRow);
+
+        var emptyHeader = document.createElement("th");
+        emptyHeader.classList.add("header");
+        emptyHeader.textContent = "";
+        headerRow.appendChild(emptyHeader);
+
+        for (var i = 0; i < passedNumber; i++) {
+          var colHeader = document.createElement("th");
+          colHeader.classList.add("header");
+          colHeader.textContent = numbers[i];
+          headerRow.appendChild(colHeader);
+        }
+
+        for (var i = 0; i < passedNumber; i++) {
+          var row = document.createElement("tr");
+          tbody.appendChild(row);
+
+          var rowHeader = document.createElement("th");
+          rowHeader.classList.add("header");
+          rowHeader.textContent = numbers[i];
+          row.appendChild(rowHeader);
+
+          for (var j = 0; j < passedNumber; j++) {
+            var result = numbers[i] * numbers[j];
+            var cell = document.createElement("td");
+            cell.textContent = result;
+
+            if (result % 3 === 0) {
+              cell.classList.add("zero");
+            } else if (result % 3 === 1) {
+              cell.classList.add("one");
+            }
+            else {
+              cell.classList.add("two");
+            }
+
+            row.appendChild(cell);
+
+            
+          }
+        }
+      });
+    </script>
+    
+  </body>
+  <footer>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut tempus
+      lorem. Mauris pretium libero tellus, ut rutrum ante euismod nec. Nam eget
+      tempor orci, a suscipit metus. Suspendisse a condimentum dui. Sed
+      dignissim et ex sit amet viverra. Nam fermentum, metus nec imperdiet
+      fermentum, justo dui hendrerit mi, id luctus erat tortor nec sapien. Cras
+      eu mi ut ex rhoncus rhoncus nec at purus. Mauris vel blandit nulla, eu
+      accumsan neque. Vestibulum urna enim, pretium convallis ipsum eu, euismod
+      faucibus arcu. Aliquam ut nibh sit amet magna consequat lacinia id sit
+      amet quam. Aenean nec vestibulum eros. Curabitur vestibulum diam elit, sit
+      amet pharetra mi porta eget. Quisque auctor tortor nulla, eu commodo ipsum
+      sollicitudin eu. Quisque tincidunt lacus vitae metus varius ornare.
+      Praesent vel elit ornare, consequat mi ac, scelerisque tellus. Nullam
+      fermentum est elit, quis varius neque molestie quis. Ut ornare nisi non
+      augue laoreet, et dictum lacus finibus. Sed quis dui urna. Nulla a neque
+      consequat, blandit neque at, posuere leo. Etiam sed orci auctor, blandit
+      massa a, molestie sapien. In accumsan felis in molestie efficitur. Fusce
+      tristique quam in massa placerat, at tempor nunc efficitur.
+    </p>
+  </footer>
+</html>
